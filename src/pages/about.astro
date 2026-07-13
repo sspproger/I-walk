@@ -1,5 +1,19 @@
 ---
+const pageTitle = "About Me";
 
+const identity = {
+	firstName: "Anton",
+	lastName: "Pershin",
+	country: "Russia",
+	occupation: "Software Engineer",
+	hobbies: ["Walking", "Reading", "Coding"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "Astro", "Writing Doc", "Node.js"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
 
 <html lang="en">
@@ -9,17 +23,31 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>I Walk!</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
-        <a href="/">Home</a>
-        <a href="/about/">About</a>
+        <a href="/">Home </a>
+        <a href="/about/">About </a>
         <a href="/blog/">Blog</a>
 
-		<h1>My name is Anton. I Walk!</h1>
-        <h1>About Me</h1>
-        <h2>... and my new Astro site!</h2>
-        <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
-        <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
+		<h1>{pageTitle}</h1>
+        <h2>... and my new website about walking!</h2>
+        <p>I want to share my success in walking. To motivate other people to walk and be healthy!</p>
+        <p>This website will be updated as I achieve any successes or failures, so keep coming back and follow my journey!</p>
+		<p>Here are a few facts about me:</p>
+		<ui>
+			<li>My name is {identity.firstName} {identity.lastName}.</li>
+			<li>I live in {identity.country} and I work as a {identity.occupation}.</li>
+			{identity.hobbies.length >= 2 &&
+			<li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
+			}
+		</ui>
+		<p>My skills are:</p>
+		<ui>
+			{skills.map((skill) => <li>{skill}</li>)}
+		</ui>
+		{happy && <p>I am happy that I can walk!</p>}
+		{finished && <p>I finished this tutorial!</p>}
+		{goal === 3 ? <p>My goal is to walk every 3 days.</p> : <p>My goal is not 3 days.</p>}
 	</body>
 </html>
