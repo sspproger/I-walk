@@ -1,4 +1,6 @@
 ---
+import Footer from '../components/Footer.astro';
+import Navigation from '../components/Navigation.astro';
 import '../pages/styles/global.css';
 
 const pageTitle = "My blog about walking";
@@ -14,10 +16,8 @@ const pageTitle = "My blog about walking";
 		<title>{pageTitle}</title>
 	</head>
 	<body>
-		<a href="/">Home </a>
-        <a href="/about/">About </a>
-        <a href="/blog/">Blog</a>
-		
+		<Navigation />
+
 		<h1>{pageTitle}</h1>
         <p>Here, I will tell you about my journey of learning to walk.</p>
         <ul>
@@ -25,5 +25,6 @@ const pageTitle = "My blog about walking";
             <li><a href="/posts/post-2/">Post 2</a></li>
             <li><a href="/posts/post-3/">Post 3</a></li>
         </ul>
-    </body>
+		<Footer />
+	</body>
 </html>
