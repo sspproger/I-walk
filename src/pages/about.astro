@@ -1,4 +1,6 @@
 ---
+import '../pages/styles/global.css';
+
 const pageTitle = "About Me";
 
 const identity = {
@@ -14,6 +16,10 @@ const skills = ["HTML", "CSS", "JavaScript", "Astro", "Writing Doc", "Node.js"];
 const happy = true;
 const finished = false;
 const goal = 3;
+
+const skillColor = "green";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 
 <html lang="en">
@@ -25,6 +31,13 @@ const goal = 3;
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
 	</head>
+	<style define:vars={{skillColor, fontWeight, textCase}}>
+		.skill {
+			color: var(--skillColor);
+			text-weight: var(--textCase);
+			font-weight: var(--fontWeight);
+		}
+	</style>
 	<body>
         <a href="/">Home </a>
         <a href="/about/">About </a>
@@ -35,17 +48,17 @@ const goal = 3;
         <p>I want to share my success in walking. To motivate other people to walk and be healthy!</p>
         <p>This website will be updated as I achieve any successes or failures, so keep coming back and follow my journey!</p>
 		<p>Here are a few facts about me:</p>
-		<ui>
+		<ul>
 			<li>My name is {identity.firstName} {identity.lastName}.</li>
 			<li>I live in {identity.country} and I work as a {identity.occupation}.</li>
 			{identity.hobbies.length >= 2 &&
 			<li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
 			}
-		</ui>
+		</ul>
 		<p>My skills are:</p>
-		<ui>
-			{skills.map((skill) => <li>{skill}</li>)}
-		</ui>
+		<ul>
+			{skills.map((skill) => <li class="skill">{skill}</li>)}
+		</ul>
 		{happy && <p>I am happy that I can walk!</p>}
 		{finished && <p>I finished this tutorial!</p>}
 		{goal === 3 ? <p>My goal is to walk every 3 days.</p> : <p>My goal is not 3 days.</p>}
